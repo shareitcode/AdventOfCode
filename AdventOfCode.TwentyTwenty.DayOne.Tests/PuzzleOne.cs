@@ -1,7 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace AdventOfCode.TwentyTwenty.DayOne.Tests
 {
@@ -13,7 +11,23 @@ namespace AdventOfCode.TwentyTwenty.DayOne.Tests
 		[TestMethod]
 		public void TwoEntriesThatSumOfTwentyTwenty()
 		{
-			
+			int result = Get();
+			Assert.IsTrue(result > 0);
+		}
+
+		private int Get()
+		{
+			int result = 0;
+			foreach (short nOne in _numbers)
+				foreach (short nTwo in _numbers)
+				{
+					if (nOne + nTwo == 2020)
+					{
+						result = nOne * nTwo;
+						break;
+					}
+				}
+			return result;
 		}
 	}
 }
