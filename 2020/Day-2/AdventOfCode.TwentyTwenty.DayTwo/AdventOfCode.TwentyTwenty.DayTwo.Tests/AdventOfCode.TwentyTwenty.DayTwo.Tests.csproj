@@ -5,8 +5,6 @@
 
     <IsPackable>false</IsPackable>
 
-    <Platforms>AnyCPU;x64</Platforms>
-
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
 
@@ -18,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdventOfCode.TwentyTwenty.DayOne.Business\AdventOfCode.TwentyTwenty.DayOne.Business.csproj" />
+    <ProjectReference Include="..\AdventOfCode.TwentyTwenty.DayTwo.Business\AdventOfCode.TwentyTwenty.DayTwo.Business.csproj" />
   </ItemGroup>
 
 </Project>
