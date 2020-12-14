@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="AOC-2020-D-3-example-input.txt" />
+    <None Remove="AOC-2020-D-3-input.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="AOC-2020-D-3-example-input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AOC-2020-D-3-input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Utils\AdventOfCode.Utils\AdventOfCode.Utils.csproj" />
+    <ProjectReference Include="..\AdventOfCode.TwentyTwenty.DayThree.Business\AdventOfCode.TwentyTwenty.DayThree.Business.csproj" />
+  </ItemGroup>
+
+</Project>

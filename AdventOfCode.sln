@@ -15,15 +15,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.TwentyTwenty.D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Day-2", "Day-2", "{A6FFCB3C-8553-4A89-9B0B-9D3965ED64D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.TwentyTwenty.DayTwo.ConsoleApp", "2020\Day-2\AdventOfCode.TwentyTwenty.DayTwo\AdventOfCode.TwentyTwenty.DayTwo.ConsoleApp\AdventOfCode.TwentyTwenty.DayTwo.ConsoleApp.csproj", "{7C919F29-153D-4E5B-9382-81E713C880B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.TwentyTwenty.DayTwo.ConsoleApp", "2020\Day-2\AdventOfCode.TwentyTwenty.DayTwo\AdventOfCode.TwentyTwenty.DayTwo.ConsoleApp\AdventOfCode.TwentyTwenty.DayTwo.ConsoleApp.csproj", "{7C919F29-153D-4E5B-9382-81E713C880B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.TwentyTwenty.DayTwo.Business", "2020\Day-2\AdventOfCode.TwentyTwenty.DayTwo\AdventOfCode.TwentyTwenty.DayTwo.Business\AdventOfCode.TwentyTwenty.DayTwo.Business.csproj", "{C14FAD0E-EF66-42BD-A2CB-2B3F58581EDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.TwentyTwenty.DayTwo.Business", "2020\Day-2\AdventOfCode.TwentyTwenty.DayTwo\AdventOfCode.TwentyTwenty.DayTwo.Business\AdventOfCode.TwentyTwenty.DayTwo.Business.csproj", "{C14FAD0E-EF66-42BD-A2CB-2B3F58581EDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.TwentyTwenty.DayTwo.Tests", "2020\Day-2\AdventOfCode.TwentyTwenty.DayTwo\AdventOfCode.TwentyTwenty.DayTwo.Tests\AdventOfCode.TwentyTwenty.DayTwo.Tests.csproj", "{15D4718A-9754-4818-85F6-3B3E52A82CA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.TwentyTwenty.DayTwo.Tests", "2020\Day-2\AdventOfCode.TwentyTwenty.DayTwo\AdventOfCode.TwentyTwenty.DayTwo.Tests\AdventOfCode.TwentyTwenty.DayTwo.Tests.csproj", "{15D4718A-9754-4818-85F6-3B3E52A82CA7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{F88BCC5D-3EE4-4626-B522-71D8E9E7EA51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.Utils", "Utils\AdventOfCode.Utils\AdventOfCode.Utils.csproj", "{E6775299-C9F0-46C8-8620-76976FEDF78C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Utils", "Utils\AdventOfCode.Utils\AdventOfCode.Utils.csproj", "{E6775299-C9F0-46C8-8620-76976FEDF78C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Day-3", "Day-3", "{F69B0092-2B87-480C-9239-DAEACF501669}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.TwentyTwenty.DayThree.ConsoleApp", "2020\Day-3\AdventOfCode.TwentyTwenty.DayThree.ConsoleApp\AdventOfCode.TwentyTwenty.DayThree.ConsoleApp.csproj", "{C639C0EE-8513-439B-B80C-8A044D7F7F2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.TwentyTwenty.DayThree.Business", "2020\Day-3\AdventOfCode.TwentyTwenty.DayThree.Business\AdventOfCode.TwentyTwenty.DayThree.Business.csproj", "{F186BA43-25C8-4020-A4A1-DE03D0E87838}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.TwentyTwenty.DayThree.Tests", "2020\Day-3\AdventOfCode.TwentyTwenty.DayThree.Tests\AdventOfCode.TwentyTwenty.DayThree.Tests.csproj", "{2CFA249D-D649-452C-A6F1-8E22081C52B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +97,30 @@ Global
 		{E6775299-C9F0-46C8-8620-76976FEDF78C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E6775299-C9F0-46C8-8620-76976FEDF78C}.Release|x64.ActiveCfg = Release|Any CPU
 		{E6775299-C9F0-46C8-8620-76976FEDF78C}.Release|x64.Build.0 = Release|Any CPU
+		{C639C0EE-8513-439B-B80C-8A044D7F7F2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C639C0EE-8513-439B-B80C-8A044D7F7F2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C639C0EE-8513-439B-B80C-8A044D7F7F2D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C639C0EE-8513-439B-B80C-8A044D7F7F2D}.Debug|x64.Build.0 = Debug|Any CPU
+		{C639C0EE-8513-439B-B80C-8A044D7F7F2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C639C0EE-8513-439B-B80C-8A044D7F7F2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C639C0EE-8513-439B-B80C-8A044D7F7F2D}.Release|x64.ActiveCfg = Release|Any CPU
+		{C639C0EE-8513-439B-B80C-8A044D7F7F2D}.Release|x64.Build.0 = Release|Any CPU
+		{F186BA43-25C8-4020-A4A1-DE03D0E87838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F186BA43-25C8-4020-A4A1-DE03D0E87838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F186BA43-25C8-4020-A4A1-DE03D0E87838}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F186BA43-25C8-4020-A4A1-DE03D0E87838}.Debug|x64.Build.0 = Debug|Any CPU
+		{F186BA43-25C8-4020-A4A1-DE03D0E87838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F186BA43-25C8-4020-A4A1-DE03D0E87838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F186BA43-25C8-4020-A4A1-DE03D0E87838}.Release|x64.ActiveCfg = Release|Any CPU
+		{F186BA43-25C8-4020-A4A1-DE03D0E87838}.Release|x64.Build.0 = Release|Any CPU
+		{2CFA249D-D649-452C-A6F1-8E22081C52B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CFA249D-D649-452C-A6F1-8E22081C52B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CFA249D-D649-452C-A6F1-8E22081C52B4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2CFA249D-D649-452C-A6F1-8E22081C52B4}.Debug|x64.Build.0 = Debug|Any CPU
+		{2CFA249D-D649-452C-A6F1-8E22081C52B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CFA249D-D649-452C-A6F1-8E22081C52B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CFA249D-D649-452C-A6F1-8E22081C52B4}.Release|x64.ActiveCfg = Release|Any CPU
+		{2CFA249D-D649-452C-A6F1-8E22081C52B4}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +135,10 @@ Global
 		{C14FAD0E-EF66-42BD-A2CB-2B3F58581EDA} = {A6FFCB3C-8553-4A89-9B0B-9D3965ED64D6}
 		{15D4718A-9754-4818-85F6-3B3E52A82CA7} = {A6FFCB3C-8553-4A89-9B0B-9D3965ED64D6}
 		{E6775299-C9F0-46C8-8620-76976FEDF78C} = {F88BCC5D-3EE4-4626-B522-71D8E9E7EA51}
+		{F69B0092-2B87-480C-9239-DAEACF501669} = {18747B78-AF28-4AE0-B8CB-0965EAD586E3}
+		{C639C0EE-8513-439B-B80C-8A044D7F7F2D} = {F69B0092-2B87-480C-9239-DAEACF501669}
+		{F186BA43-25C8-4020-A4A1-DE03D0E87838} = {F69B0092-2B87-480C-9239-DAEACF501669}
+		{2CFA249D-D649-452C-A6F1-8E22081C52B4} = {F69B0092-2B87-480C-9239-DAEACF501669}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AD0672DB-4983-41EC-9C1E-1631E308AF90}

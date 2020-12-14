@@ -17,9 +17,9 @@ namespace AdventOfCode.TwentyTwenty.DayTwo.ConsoleApp
 			if (passwords != null && passwords.Length > 0)
 				countValidPasswordPartTwo = PasswordPhilosophy.GetNumbersValidPasswordsContainsExactlyOccurrenceCharacter(passwords);
 
-			Console.WriteLine("==========================================");
-			Console.WriteLine("ADVENT OF CODE 2020 - DAY 1: REPORT REPAIR");
-			Console.WriteLine("==========================================");
+			Console.WriteLine("====================================================");
+			Console.WriteLine("ADVENT OF CODE 2020 - DAY 2: PASSWORD PHILOSOPHY");
+			Console.WriteLine("====================================================");
 			Console.WriteLine("----- PART 1 -----");
 			Console.WriteLine($"Result: {countValidPasswordPartOne}");
 			Console.WriteLine("----- PART 2 -----");
