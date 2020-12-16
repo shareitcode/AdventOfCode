@@ -6,6 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="AOC-2020-D-4-input.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="AOC-2020-D-4-input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\Utils\AdventOfCode.Utils\AdventOfCode.Utils.csproj" />
     <ProjectReference Include="..\AdventOfCode.TwentyTwenty.DayFour.Business\AdventOfCode.TwentyTwenty.DayFour.Business.csproj" />
   </ItemGroup>

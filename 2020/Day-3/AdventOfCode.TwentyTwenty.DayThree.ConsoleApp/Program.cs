@@ -12,7 +12,7 @@ namespace AdventOfCode.TwentyTwenty.DayThree.ConsoleApp
 			string[] input = await FileUtils.ReadFileContentFromPathAsync("AOC-2020-D-3-input.txt");
 
 			Console.WriteLine("====================================================");
-			Console.WriteLine("ADVENT OF CODE 2020 - DAY 2: TOBOGGAN TRAJECTORY");
+			Console.WriteLine("ADVENT OF CODE 2020 - DAY 3: TOBOGGAN TRAJECTORY");
 			Console.WriteLine("====================================================");
 			Console.WriteLine("----- PART 1 -----");
 			Console.WriteLine($"Result: {TobogganTrajectory.TreeCounterFromInput(input)}");

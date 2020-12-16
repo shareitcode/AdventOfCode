@@ -1,17 +1,16 @@
+using AdventOfCode.TwentyTwenty.DayFour.Business;
 using AdventOfCode.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AdventOfCode.TwentyTwenty.DayFour.Tests
 {
-	[TestClass]
+    [TestClass]
 	public class PassportProcessingTests
 	{
 		private string[] inputExample;
 		private string[] input;
+		private PassportProcessing passportProcessing;
 
 		[TestInitialize]
 		public async Task InitInput()
@@ -23,9 +22,10 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Tests
 		[TestMethod]
 		public void CountPasswordValidFromExampleInput()
 		{
-			IEnumerable<string> passports = this.GetPassports(this.inputExample);
+			passportProcessing = new PassportProcessing(this.inputExample);
+			passportProcessing.GetPassports();
 
-			int passwordValidCount = passports.Count(this.ContainsValidFields);
+			int passwordValidCount = passportProcessing.CountValidPassport();
 
 			Assert.IsTrue(passwordValidCount == 2);
 		}
@@ -33,40 +33,12 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Tests
 		[TestMethod]
 		public void CountPasswordValid()
 		{
-			IEnumerable<string> passports = this.GetPassports(this.input);
+			passportProcessing = new PassportProcessing(this.input);
+			passportProcessing.GetPassports();
 
-			int passwordValidCount = passports.Count(this.ContainsValidFields);
+			int passwordValidCount = passportProcessing.CountValidPassport();
 
 			Assert.IsTrue(passwordValidCount == 206);
 		}
-
-		private IEnumerable<string> GetPassports(string[] input)
-		{
-			List<string> passports = new List<string>();
-			StringBuilder stringBuilder = new StringBuilder();
-			int lineCounter = 1;
-
-			foreach (string line in input)
-			{
-				if (!string.IsNullOrEmpty(line))
-				{
-					stringBuilder.Append(line);
-				}
-				else
-				{
-					passports.Add(stringBuilder.ToString());
-					stringBuilder = new StringBuilder();
-				}
-
-				lineCounter++;
-				if (lineCounter == input.Length + 1)
-					passports.Add(stringBuilder.ToString());
-			}
-
-			return passports;
-		}
-
-		private bool ContainsValidFields(string passport) => passport.Contains("byr:") && passport.Contains("iyr:") && passport.Contains("eyr:") && passport.Contains("hgt:")
-					&& passport.Contains("hcl:") && passport.Contains("ecl:") && passport.Contains("pid:");
 	}
 }
