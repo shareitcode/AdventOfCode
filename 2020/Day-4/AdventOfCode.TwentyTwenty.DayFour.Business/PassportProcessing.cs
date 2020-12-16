@@ -6,16 +6,6 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 {
     public sealed class PassportProcessing
     {
-        #region Constants field keys
-        private const string BirthYearFieldKey = "byr:";
-        private const string IssueYearFieldKey = "iyr:";
-        private const string ExpirationYearFieldKey = "eyr:";
-        private const string HeightFieldKey = "hgt:";
-        private const string HairColorFieldKey = "hcl:";
-        private const string EyeColorFieldKey = "ecl:";
-        private const string PassportIdFieldKey = "pid:";
-        #endregion
-
         private readonly string[] input;
         private readonly List<string> passports;
         private StringBuilder stringBuilder;
@@ -54,7 +44,13 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
         #region Get passports private methods
         private static bool LineIsNotNullOrEmpty(string line) => !string.IsNullOrEmpty(line);
 
-        private void BuildPasswport(string line) => this.stringBuilder.Append(line);
+        private void BuildPasswport(string line)
+        {
+            if (this.stringBuilder.Length > 0)
+                this.stringBuilder.Append($" {line}");
+            else
+                this.stringBuilder.Append(line);
+        }
 
         private void AddPassport() => this.passports.Add(this.stringBuilder.ToString());
 
@@ -65,7 +61,8 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 
         public int CountValidPassport() => passports.Count(ContainsValidFields);
 
-        private bool ContainsValidFields(string passport) => passport.Contains(BirthYearFieldKey) && passport.Contains(IssueYearFieldKey) && passport.Contains(ExpirationYearFieldKey)
-            && passport.Contains(HeightFieldKey) && passport.Contains(HairColorFieldKey) && passport.Contains(EyeColorFieldKey) && passport.Contains(PassportIdFieldKey);
+        public bool ContainsValidFields(string passport) => passport.Contains(Keys.BirthYearFieldKey) && passport.Contains(Keys.IssueYearFieldKey)
+            && passport.Contains(Keys.ExpirationYearFieldKey) && passport.Contains(Keys.HeightFieldKey) && passport.Contains(Keys.HairColorFieldKey)
+            && passport.Contains(Keys.EyeColorFieldKey) && passport.Contains(Keys.PassportIdFieldKey);
     }
 }

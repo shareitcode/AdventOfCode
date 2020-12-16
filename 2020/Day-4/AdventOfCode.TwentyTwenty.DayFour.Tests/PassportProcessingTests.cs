@@ -1,6 +1,7 @@
 using AdventOfCode.TwentyTwenty.DayFour.Business;
 using AdventOfCode.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AdventOfCode.TwentyTwenty.DayFour.Tests
@@ -39,6 +40,26 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Tests
 			int passwordValidCount = passportProcessing.CountValidPassport();
 
 			Assert.IsTrue(passwordValidCount == 206);
+		}
+
+		[TestMethod]
+		public void GetKeysValuesFromPassport()
+		{
+			passportProcessing = new PassportProcessing(this.inputExample);
+			IEnumerable<string> passports = passportProcessing.GetPassports();
+			List<Dictionary<string, string>> keyValuePairs = new List<Dictionary<string, string>>();
+			string[] keysValues = System.Array.Empty<string>();
+
+			foreach (string passwport in passports)
+            {
+				if (passportProcessing.ContainsValidFields(passwport))
+					keysValues = passwport.Split(' ');
+            }
+
+            foreach (string keyValue in keysValues)
+            {
+				if ()
+            }
 		}
 	}
 }
