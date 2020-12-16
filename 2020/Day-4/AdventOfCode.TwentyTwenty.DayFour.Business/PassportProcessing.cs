@@ -4,65 +4,87 @@ using System.Text;
 
 namespace AdventOfCode.TwentyTwenty.DayFour.Business
 {
-    public sealed class PassportProcessing
-    {
-        private readonly string[] input;
-        private readonly List<string> passports;
-        private StringBuilder stringBuilder;
-        private int lineCounter = 1;
+	public sealed class PassportProcessing
+	{
+		private readonly string[] _input;
+		private readonly List<string> _passportsKeysValues;
+		private StringBuilder _stringBuilder;
+		private int _lineCounter = 1;
 
-        public PassportProcessing(string[] input)
-        {
-            this.input = input;
-            this.passports = new List<string>();
-            this.InitStringBuilder();
-        }
+		public PassportProcessing(string[] input)
+		{
+			this._input = input;
+			this._passportsKeysValues = new List<string>();
+			this.InitStringBuilder();
+		}
 
-        public IEnumerable<string> GetPassports()
-        {
-            foreach (string line in this.input)
-            {
-                if (LineIsNotNullOrEmpty(line))
-                    this.BuildPasswport(line);
-                else
-                {
-                    this.AddPassport();
-                    this.InitStringBuilder();
-                }
+		public IEnumerable<Passport> GetPassports()
+		{
+			List<Passport> passports = new List<Passport>();
+			IEnumerable<string> passportsKeysValues = this.GetPassportsKeysValues();
 
-                this.IncrementeLineCounter();
+			foreach (string passportKeyValue in passportsKeysValues)
+			{
+				Passport passport = new Passport()
+				{
+					KeysValues = passportKeyValue,
+					Dictionary = new Dictionary<string, string>()
+				};
+				if (this.ContainsValidFields(passportKeyValue))
+				{
+					string[] keysValues = passportKeyValue.Split(' ');
 
-                if (this.IsLastLineOfFile())
-                    this.AddPassport();
-            }
+					foreach (string keyValue in keysValues)
+					{
+						string[] keyValueSplit = keyValue.Split(':');
+						passport.Dictionary.Add(keyValueSplit[0], keyValueSplit[1]);
+					}
+				}
+				passports.Add(passport);
+			}
 
-            return this.passports;
-        }
+			return passports;
+		}
 
-        private void InitStringBuilder() => this.stringBuilder = new StringBuilder();
+		public IEnumerable<string> GetPassportsKeysValues()
+		{
+			foreach (string line in this._input)
+			{
+				if (LineIsNotNullOrEmpty(line))
+					this.BuildPassport(line);
+				else
+				{
+					this.AddPassport();
+					this.InitStringBuilder();
+				}
 
-        #region Get passports private methods
-        private static bool LineIsNotNullOrEmpty(string line) => !string.IsNullOrEmpty(line);
+				this.IncrementLineCounter();
 
-        private void BuildPasswport(string line)
-        {
-            if (this.stringBuilder.Length > 0)
-                this.stringBuilder.Append($" {line}");
-            else
-                this.stringBuilder.Append(line);
-        }
+				if (this.IsLastLineOfFile())
+					this.AddPassport();
+			}
 
-        private void AddPassport() => this.passports.Add(this.stringBuilder.ToString());
+			return this._passportsKeysValues;
+		}
 
-        private void IncrementeLineCounter() => this.lineCounter++;
+		private void InitStringBuilder() => this._stringBuilder = new StringBuilder();
 
-        private bool IsLastLineOfFile() => this.lineCounter == this.input.Length + 1;
-        #endregion
+		#region Get passportKeyValue private methods
+		private static bool LineIsNotNullOrEmpty(string line) => !string.IsNullOrEmpty(line);
 
-        public int CountValidPassport() => passports.Count(ContainsValidFields);
+		private void BuildPassport(string line) => this._stringBuilder.Append(this._stringBuilder.Length > 0 ? $" {line}" : line);
 
-        public bool ContainsValidFields(string passport) => passport.Contains(Keys.BirthYearFieldKey) && passport.Contains(Keys.IssueYearFieldKey)
-            && passport.Contains(Keys.ExpirationYearFieldKey) && passport.Contains(Keys.HeightFieldKey) && passport.Contains(Keys.HairColorFieldKey)
-            && passport.Contains(Keys.EyeColorFieldKey) && passport.Contains(Keys.PassportIdFieldKey);
-    }
+		private void AddPassport() => this._passportsKeysValues.Add(this._stringBuilder.ToString());
+
+		private void IncrementLineCounter() => this._lineCounter++;
+
+		private bool IsLastLineOfFile() => this._lineCounter == this._input.Length + 1;
+		#endregion
+
+		public int CountValidPassport() => this._passportsKeysValues.Count(this.ContainsValidFields);
+
+		public bool ContainsValidFields(string passportKeyValue) => passportKeyValue.Contains(Keys.BirthYearFieldKey) && passportKeyValue.Contains(Keys.IssueYearFieldKey)
+			&& passportKeyValue.Contains(Keys.ExpirationYearFieldKey) && passportKeyValue.Contains(Keys.HeightFieldKey) && passportKeyValue.Contains(Keys.HairColorFieldKey)
+			&& passportKeyValue.Contains(Keys.EyeColorFieldKey) && passportKeyValue.Contains(Keys.PassportIdFieldKey);
+	}
 }

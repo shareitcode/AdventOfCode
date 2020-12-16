@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode.TwentyTwenty.DayFour.Tests
 {
-    [TestClass]
+	[TestClass]
 	public class PassportProcessingTests
 	{
 		private string[] inputExample;
@@ -23,10 +23,10 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Tests
 		[TestMethod]
 		public void CountPasswordValidFromExampleInput()
 		{
-			passportProcessing = new PassportProcessing(this.inputExample);
-			passportProcessing.GetPassports();
+			this.passportProcessing = new PassportProcessing(this.inputExample);
+			this.passportProcessing.GetPassports();
 
-			int passwordValidCount = passportProcessing.CountValidPassport();
+			int passwordValidCount = this.passportProcessing.CountValidPassport();
 
 			Assert.IsTrue(passwordValidCount == 2);
 		}
@@ -34,10 +34,10 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Tests
 		[TestMethod]
 		public void CountPasswordValid()
 		{
-			passportProcessing = new PassportProcessing(this.input);
-			passportProcessing.GetPassports();
+			this.passportProcessing = new PassportProcessing(this.input);
+			this.passportProcessing.GetPassports();
 
-			int passwordValidCount = passportProcessing.CountValidPassport();
+			int passwordValidCount = this.passportProcessing.CountValidPassport();
 
 			Assert.IsTrue(passwordValidCount == 206);
 		}
@@ -45,21 +45,25 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Tests
 		[TestMethod]
 		public void GetKeysValuesFromPassport()
 		{
-			passportProcessing = new PassportProcessing(this.inputExample);
-			IEnumerable<string> passports = passportProcessing.GetPassports();
-			List<Dictionary<string, string>> keyValuePairs = new List<Dictionary<string, string>>();
-			string[] keysValues = System.Array.Empty<string>();
+			this.passportProcessing = new PassportProcessing(this.inputExample);
+			IEnumerable<string> passports = this.passportProcessing.GetPassportsKeysValues();
+			List<Dictionary<string, string>> passportsValues = new List<Dictionary<string, string>>();
 
-			foreach (string passwport in passports)
-            {
-				if (passportProcessing.ContainsValidFields(passwport))
-					keysValues = passwport.Split(' ');
-            }
+			foreach (string passport in passports)
+			{
+				if (this.passportProcessing.ContainsValidFields(passport))
+				{
+					string[] keysValues = passport.Split(' ');
+					Dictionary<string, string> passportKeysValues = new Dictionary<string, string>();
 
-            foreach (string keyValue in keysValues)
-            {
-				if ()
-            }
+					foreach (string keyValue in keysValues)
+					{
+						string[] keyValueStrings = keyValue.Split(':');
+						passportKeysValues.Add(keyValueStrings[0], keyValueStrings[1]);
+					}
+					passportsValues.Add(passportKeysValues);
+				}
+			}
 		}
 	}
 }
