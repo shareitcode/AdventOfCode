@@ -9,6 +9,7 @@
         public const string HairColorField = "hcl:";
         public const string EyeColorField = "ecl:";
         public const string PassportIdField = "pid:";
+		public const string CountryIdField = "cid:";
 
         public const string BirthYearFieldKey = "byr";
         public const string IssueYearFieldKey = "iyr";
@@ -17,5 +18,6 @@
         public const string HairColorFieldKey = "hcl";
         public const string EyeColorFieldKey = "ecl";
         public const string PassportIdFieldKey = "pid";
+        public const string CountryIdFieldKey = "cid";
     }
 }

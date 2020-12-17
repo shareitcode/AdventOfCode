@@ -2,6 +2,7 @@ using AdventOfCode.TwentyTwenty.DayFour.Business;
 using AdventOfCode.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AdventOfCode.TwentyTwenty.DayFour.Tests
@@ -24,20 +25,22 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Tests
 		public void CountPasswordValidFromExampleInput()
 		{
 			this.passportProcessing = new PassportProcessing(this.inputExample);
-			this.passportProcessing.GetPassports();
+			IEnumerable<string> passportsKeysValues = this.passportProcessing.GetPassportsKeysValues();
+			IEnumerable<Passport> passports = this.passportProcessing.GetPassports();
 
-			int passwordValidCount = this.passportProcessing.CountValidPassport();
+			int passportsKeysValuesValidCount = this.passportProcessing.CountValidPassport(passportsKeysValues);
+			int passwordValidCount = passports.Count(passport => passport.IsValid);
 
-			Assert.IsTrue(passwordValidCount == 2);
+			Assert.IsTrue(passportsKeysValuesValidCount == 2);
 		}
 
 		[TestMethod]
 		public void CountPasswordValid()
 		{
 			this.passportProcessing = new PassportProcessing(this.input);
-			this.passportProcessing.GetPassports();
+			IEnumerable<string> passportsKeysValues = this.passportProcessing.GetPassportsKeysValues();
 
-			int passwordValidCount = this.passportProcessing.CountValidPassport();
+			int passwordValidCount = this.passportProcessing.CountValidPassport(passportsKeysValues);
 
 			Assert.IsTrue(passwordValidCount == 206);
 		}
@@ -46,24 +49,11 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Tests
 		public void GetKeysValuesFromPassport()
 		{
 			this.passportProcessing = new PassportProcessing(this.inputExample);
-			IEnumerable<string> passports = this.passportProcessing.GetPassportsKeysValues();
-			List<Dictionary<string, string>> passportsValues = new List<Dictionary<string, string>>();
+			IEnumerable<Passport> passports = this.passportProcessing.GetPassports();
 
-			foreach (string passport in passports)
-			{
-				if (this.passportProcessing.ContainsValidFields(passport))
-				{
-					string[] keysValues = passport.Split(' ');
-					Dictionary<string, string> passportKeysValues = new Dictionary<string, string>();
+			int passwordValidCount = passports.Count(passport => passport.IsValid);
 
-					foreach (string keyValue in keysValues)
-					{
-						string[] keyValueStrings = keyValue.Split(':');
-						passportKeysValues.Add(keyValueStrings[0], keyValueStrings[1]);
-					}
-					passportsValues.Add(passportKeysValues);
-				}
-			}
+			Assert.IsTrue(passwordValidCount == 2);
 		}
 	}
 }

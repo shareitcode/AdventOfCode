@@ -7,14 +7,12 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 	public sealed class PassportProcessing
 	{
 		private readonly string[] _input;
-		private readonly List<string> _passportsKeysValues;
 		private StringBuilder _stringBuilder;
 		private int _lineCounter = 1;
 
 		public PassportProcessing(string[] input)
 		{
 			this._input = input;
-			this._passportsKeysValues = new List<string>();
 			this.InitStringBuilder();
 		}
 
@@ -25,46 +23,89 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 
 			foreach (string passportKeyValue in passportsKeysValues)
 			{
-				Passport passport = new Passport()
+				Passport passport = new Passport
 				{
-					KeysValues = passportKeyValue,
-					Dictionary = new Dictionary<string, string>()
+					Fields = GetPassportFields(passportKeyValue.Split(' '))
 				};
-				if (this.ContainsValidFields(passportKeyValue))
-				{
-					string[] keysValues = passportKeyValue.Split(' ');
-
-					foreach (string keyValue in keysValues)
-					{
-						string[] keyValueSplit = keyValue.Split(':');
-						passport.Dictionary.Add(keyValueSplit[0], keyValueSplit[1]);
-					}
-				}
 				passports.Add(passport);
 			}
 
 			return passports;
 		}
 
+		private static IEnumerable<Field> GetPassportFields(string[] keysValues)
+		{
+			List<Field> fields = new List<Field>();
+
+			foreach (string keyValue in keysValues)
+			{
+				string[] keyValueSplit = keyValue.Split(':');
+				fields.Add(BuildPassportField(keyValueSplit[0], keyValueSplit[1]));
+			}
+
+			return fields;
+		}
+
+		private static Field BuildPassportField(string key, string value)
+		{
+			Field field = new UnknownField(string.Empty, string.Empty);
+
+			if (key.Equals(Keys.BirthYearFieldKey))
+			{
+				field = new BirthYearField(key, value);
+			}
+			if (key.Equals(Keys.IssueYearFieldKey))
+			{
+				field = new IssueYearField(key, value);
+			}
+			if (key.Equals(Keys.ExpirationYearFieldKey))
+			{
+				field = new ExpirationYearField(key, value);
+			}
+			if (key.Equals(Keys.HeightFieldKey))
+			{
+				field = new HeightField(key, value);
+			}
+			if (key.Equals(Keys.HairColorFieldKey))
+			{
+				field = new HairColorField(key, value);
+			}
+			if (key.Equals(Keys.EyeColorFieldKey))
+			{
+				field = new EyeColorField(key, value);
+			}
+			if (key.Equals(Keys.PassportIdFieldKey))
+			{
+				field = new PassportIdField(key, value);
+			}
+			if (key.Equals(Keys.CountryIdFieldKey))
+			{
+				field = new CountryIdField(key, value);
+			}
+
+			return field;
+		}
+
 		public IEnumerable<string> GetPassportsKeysValues()
 		{
+			List<string> passportsKeysValues = new List<string>();
 			foreach (string line in this._input)
 			{
 				if (LineIsNotNullOrEmpty(line))
 					this.BuildPassport(line);
 				else
 				{
-					this.AddPassport();
+					passportsKeysValues.Add(this.AddPassport());
 					this.InitStringBuilder();
 				}
 
 				this.IncrementLineCounter();
 
 				if (this.IsLastLineOfFile())
-					this.AddPassport();
+					passportsKeysValues.Add(this.AddPassport());
 			}
 
-			return this._passportsKeysValues;
+			return passportsKeysValues;
 		}
 
 		private void InitStringBuilder() => this._stringBuilder = new StringBuilder();
@@ -74,14 +115,14 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 
 		private void BuildPassport(string line) => this._stringBuilder.Append(this._stringBuilder.Length > 0 ? $" {line}" : line);
 
-		private void AddPassport() => this._passportsKeysValues.Add(this._stringBuilder.ToString());
+		private string AddPassport() => this._stringBuilder.ToString();
 
 		private void IncrementLineCounter() => this._lineCounter++;
 
 		private bool IsLastLineOfFile() => this._lineCounter == this._input.Length + 1;
 		#endregion
 
-		public int CountValidPassport() => this._passportsKeysValues.Count(this.ContainsValidFields);
+		public int CountValidPassport(IEnumerable<string> passports) => passports.Count(this.ContainsValidFields);
 
 		public bool ContainsValidFields(string passportKeyValue) => passportKeyValue.Contains(Keys.BirthYearField) && passportKeyValue.Contains(Keys.IssueYearField)
 			&& passportKeyValue.Contains(Keys.ExpirationYearField) && passportKeyValue.Contains(Keys.HeightField) && passportKeyValue.Contains(Keys.HairColorField)
