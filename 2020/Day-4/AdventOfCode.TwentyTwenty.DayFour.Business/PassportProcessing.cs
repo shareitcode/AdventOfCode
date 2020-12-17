@@ -83,8 +83,8 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 
 		public int CountValidPassport() => this._passportsKeysValues.Count(this.ContainsValidFields);
 
-		public bool ContainsValidFields(string passportKeyValue) => passportKeyValue.Contains(Keys.BirthYearFieldKey) && passportKeyValue.Contains(Keys.IssueYearFieldKey)
-			&& passportKeyValue.Contains(Keys.ExpirationYearFieldKey) && passportKeyValue.Contains(Keys.HeightFieldKey) && passportKeyValue.Contains(Keys.HairColorFieldKey)
-			&& passportKeyValue.Contains(Keys.EyeColorFieldKey) && passportKeyValue.Contains(Keys.PassportIdFieldKey);
+		public bool ContainsValidFields(string passportKeyValue) => passportKeyValue.Contains(Keys.BirthYearField) && passportKeyValue.Contains(Keys.IssueYearField)
+			&& passportKeyValue.Contains(Keys.ExpirationYearField) && passportKeyValue.Contains(Keys.HeightField) && passportKeyValue.Contains(Keys.HairColorField)
+			&& passportKeyValue.Contains(Keys.EyeColorField) && passportKeyValue.Contains(Keys.PassportIdField);
 	}
 }
