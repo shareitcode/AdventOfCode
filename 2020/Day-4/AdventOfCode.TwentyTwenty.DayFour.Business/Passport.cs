@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AdventOfCode.Utils;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -11,9 +12,9 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 
 		private bool FieldsIsValid()
 		{
-			int optionalValid = this.Fields.Count(field => field.IsValid && Regex.IsMatch(field.Key, "byr|iyr|eyr|hgt|hcl|ecl|pid"));
-			int optional = this.Fields.Count();
-			return optionalValid == optional;
+			int optionalValid = this.Fields.Count(field => field.IsValid && field.IsRequired && Regex.IsMatch(field.Key, "byr|iyr|eyr|hgt|hcl|ecl|pid"));
+			int optional = this.Fields.Count(field => field.IsRequired);
+			return optional == 7 && optionalValid == optional;
 		}
 	}
 
@@ -22,6 +23,7 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 		public string Key;
 		public string Value;
 		public bool IsValid => this.IsValidKey() && this.IsValidValue();
+		public abstract bool IsRequired { get; }
 
 		protected Field(string key, string value)
 		{
@@ -35,6 +37,8 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 
 	public sealed class BirthYearField : Field
 	{
+		public override bool IsRequired => true;
+
 		public BirthYearField(string key, string value) : base(key, value)
 		{
 		}
@@ -46,6 +50,8 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 
 	public sealed class IssueYearField : Field
 	{
+		public override bool IsRequired => true;
+
 		public IssueYearField(string key, string value) : base(key, value)
 		{
 		}
@@ -57,6 +63,8 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 
 	public sealed class ExpirationYearField : Field
 	{
+		public override bool IsRequired => true;
+
 		public ExpirationYearField(string key, string value) : base(key, value)
 		{
 		}
@@ -68,6 +76,8 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 
 	public sealed class HeightField : Field
 	{
+		public override bool IsRequired => true;
+
 		public HeightField(string key, string value) : base(key, value)
 		{
 		}
@@ -92,6 +102,8 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 
 	public sealed class HairColorField : Field
 	{
+		public override bool IsRequired => true;
+
 		public HairColorField(string key, string value) : base(key, value)
 		{
 		}
@@ -103,6 +115,8 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 
 	public sealed class EyeColorField : Field
 	{
+		public override bool IsRequired => true;
+
 		public EyeColorField(string key, string value) : base(key, value)
 		{
 		}
@@ -114,6 +128,8 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 
 	public sealed class PassportIdField : Field
 	{
+		public override bool IsRequired => true;
+
 		public PassportIdField(string key, string value) : base(key, value)
 		{
 		}
@@ -125,6 +141,8 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 
 	public sealed class CountryIdField : Field
 	{
+		public override bool IsRequired => false;
+
 		public CountryIdField(string key, string value) : base(key, value)
 		{
 		}
@@ -136,6 +154,8 @@ namespace AdventOfCode.TwentyTwenty.DayFour.Business
 
 	public sealed class UnknownField : Field
 	{
+		public override bool IsRequired => false;
+
 		public UnknownField(string key, string value) : base(key, value)
 		{
 		}

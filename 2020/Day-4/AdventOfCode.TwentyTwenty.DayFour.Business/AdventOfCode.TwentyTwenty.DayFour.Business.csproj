@@ -5,4 +5,8 @@
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Utils\AdventOfCode.Utils\AdventOfCode.Utils.csproj" />
+  </ItemGroup>
+
 </Project>
